@@ -10,6 +10,7 @@ void Interface::getMenuItem() const noexcept {
 		messages.showMenuInputInvitation();
 		int menuItemNumber = utils.correctIntInput(1, 3);
 		std::shared_ptr<InOu> io;
+		std::shared_ptr<InOu> fio;
 		switch (menuItemNumber) {
 			case(custom_input): {			
 				messages.showTextInputInvitation();
@@ -20,8 +21,10 @@ void Interface::getMenuItem() const noexcept {
 				int countChar = atoi(countCharStr.c_str());
 				Algoritm algo;
 				std::string response =  std::to_string(algo.GetCountWordsRegEx(text, countChar));
-				io->write("ּוםüרו "+ countCharStr+ "סטלגמכמג", response);
+				io->write("ּוםüרו "+ countCharStr+ "סטלגמכמג", response);				
 				io.reset();
+				fio = io = std::make_shared<FileIO>();
+				fio->write(text, response);
 				break;
 			}
 

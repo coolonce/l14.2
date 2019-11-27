@@ -29,7 +29,7 @@ void FileIO::write(std::string text, std::string words) const noexcept
 				{
 					check_existence.close();
 					std::ofstream user_output(filename);
-					user_output << text;
+					user_output << text << std::endl;
 					user_output.close();
 				}
 				else
@@ -40,7 +40,7 @@ void FileIO::write(std::string text, std::string words) const noexcept
 			else
 			{
 				std::ofstream user_output(filename, std::ios_base::app);
-				user_output << text;
+				user_output << text << std::endl;
 				user_output.close();
 			}
 			if (is_saved) {
